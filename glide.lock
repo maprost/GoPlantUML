@@ -1,0 +1,6 @@
+hash: c883af6261171400d1987752013dd8066139f29dedc4e6d3b4f3f828750bdaf1
+updated: 2018-03-16T09:51:46.658480786+01:00
+imports: []
+testImports:
+- name: github.com/maprost/assertion
+  version: 041350679c6101c69b80baf9f20ef9111897e592
