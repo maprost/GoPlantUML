@@ -32,31 +32,31 @@ func testFrame(t *testing.T, src string, expected parser.TypeSpecMap) {
 	}
 }
 
-//func TestReadFile(t *testing.T) {
-//	assert := assertion.New(t)
-//
-//	s := parser.NewSpec()
-//	err := parser.ReadFile("../testdata/test1.go", parser.ParseFile, s)
-//	assert.Nil(err)
-//
-//	typeSpec := s.Types
-//	assert.Contains(typeSpec, parser.TypeSpec{Name: "SubTest"})
-//	assert.Contains(typeSpec, parser.TypeSpec{Name: "ToInheriate"})
-//	assert.Contains(typeSpec, parser.TypeSpec{Name: "Test",
-//		Relations: []parser.Relation{
-//			{Type: "ToInheriate", Inheritance: true},
-//			{Name: "counter", Type: "int"},
-//			{Name: "sub", Type: "SubTest"},
-//			{Name: "subList", Type: "SubTest", Many: true},
-//			{Name: "subPointer", Type: "SubTest"},
-//			{Name: "subPointerList", Type: "SubTest", Many: true},
-//			{Name: "subListPointer", Type: "SubTest", Many: true},
-//			{Name: "subMap", Type: "SubTest", Many: true},
-//			{Name: "subInterface", Type: "SubInterface"},
-//			{Name: "subFunc", Type: "func(*int)([]*string)"},
-//			{Name: "subFuncList", Type: "func(int)(string)", Many: true},
-//		}})
-//}
+func TestReadFile(t *testing.T) {
+	assert := assertion.New(t)
+
+	s := parser.NewSpec()
+	err := parser.ReadFile("../testdata/test1.go", s)
+	assert.Nil(err)
+
+	typeSpec := s.Types
+	assert.Contains(typeSpec, parser.TypeSpec{Name: "SubTest"})
+	assert.Contains(typeSpec, parser.TypeSpec{Name: "ToInheriate"})
+	assert.Contains(typeSpec, parser.TypeSpec{Name: "Test",
+		Relations: []parser.Relation{
+			{Type: "ToInheriate", Inheritance: true},
+			{Name: "counter", Type: "int"},
+			{Name: "sub", Type: "SubTest"},
+			{Name: "subList", Type: "SubTest", Many: true},
+			{Name: "subPointer", Type: "SubTest"},
+			{Name: "subPointerList", Type: "SubTest", Many: true},
+			{Name: "subListPointer", Type: "SubTest", Many: true},
+			{Name: "subMap", Type: "SubTest", Many: true},
+			{Name: "subInterface", Type: "SubInterface"},
+			{Name: "subFunc", Type: "func(*int)([]*string)"},
+			{Name: "subFuncList", Type: "func(int)(string)", Many: true},
+		}})
+}
 
 func TestReadFile_simpleStruct(t *testing.T) {
 	testFrame(t, `	

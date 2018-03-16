@@ -1,3 +1,4 @@
 .idea
 GoPlantUML
 /internal/testdata
+!/internal/testdata/test1.go
