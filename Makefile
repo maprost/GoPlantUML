@@ -1,4 +1,5 @@
-FOLDERS=$(shell go list -f '{{.Dir}}' ./... | grep -v /vendor/ | grep -v /internal/testdata/)
+FULL_FOLDER_PATH=$(shell go list -f '{{.Dir}}' ./... | grep -v /vendor/ | grep -v /internal/testdata/)
+FOLDER_PATH=$(shell go list ./... | grep -v /vendor/ | grep -v /internal/testdata/)
 
 dep:
 	go get -u github.com/Masterminds/glide
@@ -7,13 +8,13 @@ dep:
 	glide install
 
 lint:
-	gometalinter --vendor $(FOLDERS)
+	gometalinter --vendor $(FULL_FOLDER_PATH)
 
-test:
-	go test -cover $(FOLDERS)
+test: lint
+	go test -cover $(FOLDER_PATH)
 
-build: dep lint test
+build: dep test
 	go build
 
-install: dep lint test
+install: dep test
 	go install

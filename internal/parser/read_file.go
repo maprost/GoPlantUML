@@ -5,6 +5,7 @@ import (
 	"go/token"
 )
 
+// ReadFile reads the file and store the information of the file inside spec
 func ReadFile(file string, spec *PackageSpec) error {
 	fset := token.NewFileSet()
 	f, err := parser.ParseFile(fset, file, nil, 0)

@@ -40,9 +40,9 @@ func TestReadFile(t *testing.T) {
 	assert.Nil(err)
 
 	typeSpec := s.Types
-	assert.Contains(typeSpec, parser.TypeSpec{Name: "SubTest"})
-	assert.Contains(typeSpec, parser.TypeSpec{Name: "ToInheriate"})
-	assert.Contains(typeSpec, parser.TypeSpec{Name: "Test",
+	assert.Contains(typeSpec, &parser.TypeSpec{Name: "SubTest"})
+	assert.Contains(typeSpec, &parser.TypeSpec{Name: "ToInheriate"})
+	assert.Contains(typeSpec, &parser.TypeSpec{Name: "Test",
 		Relations: []parser.Relation{
 			{Type: "ToInheriate", Inheritance: true},
 			{Name: "counter", Type: "int"},
@@ -55,6 +55,9 @@ func TestReadFile(t *testing.T) {
 			{Name: "subInterface", Type: "SubInterface"},
 			{Name: "subFunc", Type: "func(*int)([]*string)"},
 			{Name: "subFuncList", Type: "func(int)(string)", Many: true},
+		},
+		Functions: []string{
+			"func String()(string)",
 		}})
 }
 
